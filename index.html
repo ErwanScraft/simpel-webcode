@@ -1,76 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pro Live Code Editor | CodeMirror 6</title>
-    
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pro Live Code Editor | CodeMirror 6</title>
 
-    <div class="app-container">
-        <section class="preview-section">
-            <header class="toolbar">
-                <span class="brand">LIVE PREVIEW</span>
-                
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="app-container">
+            <section class="preview-section">
+                <header class="toolbar">
+                    <span class="brand">LIVE PREVIEW</span>
+                </header>
 
-
-                <div class="toggle-group">
-                    <button class="btn-view active">Desktop</button>
-                    <button class="btn-view">Mobile</button>
-                </div>
-            </header>
-
-            <div class="preview-wrapper">
-                <div class="iframe-scaler">
-                    <iframe id="output-frame" sandbox="allow-scripts allow-modals"></iframe>
-                </div>
-            </div>
-        </section>
-
-        <div class="resizer" id="drag-handle">
-            <div class="resizer-knob"></div>
-        </div>
-
-        <section class="editor-section">
-            <div class="tabs-header">
-                <button class="tab-btn active">HTML</button>
-                <button class="tab-btn">CSS</button>
-                <button class="tab-btn">JS</button>
-                <button id="btn-settings" class="tab-btn" style="margin-left: auto">⚙</button>
-            </div>
-
-            <div class="editor-body">
-                <div id="editor-html" class="editor-layer active"></div>
-                <div id="editor-css" class="editor-layer"></div>
-                <div id="editor-js" class="editor-layer"></div>
-
-                <div id="editor-settings" class="editor-layer">
-                    <div class="settings-container">
-                        <h3>Editor Settings</h3>
-                        <div class="setting-item">
-    <label for="zoom-slider">Zoom Preview (<span id="zoom-level">100%</span>)</label>
-    <input type="range" id="zoom-slider" min="25" max="200" value="100" step="5" style="width: 100%;">
-</div>
-
-                        <div class="setting-item">
-                            <label for="theme-selector">Tema UI Aplikasi</label>
-                            <select id="theme-selector" class="theme-select-large"></select>
-                        </div>
-
-                        <div class="setting-item info-box">
-                            <label>Info</label>
-                            <p>Editor ini menggunakan CodeMirror 6 dengan fitur auto-save ke LocalStorage.</p>
-                        </div>
+                <div class="preview-wrapper">
+                    <div class="iframe-scaler">
+                        <iframe
+                            id="output-frame"
+                            sandbox="allow-scripts allow-modals"
+                        ></iframe>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
 
-    <script type="module" src="assets/js/main.js"></script>
-</body>
+            <div class="resizer" id="drag-handle">
+                <div class="resizer-knob"></div>
+            </div>
+
+            <section class="editor-section">
+                <div class="tabs-header">
+                    <button class="tab-btn active">HTML</button>
+                    <button class="tab-btn">CSS</button>
+                    <button class="tab-btn">JS</button>
+                    <button
+                        id="btn-settings"
+                        class="tab-btn"
+                        style="margin-left: auto"
+                    >
+                        ⚙
+                    </button>
+                </div>
+
+                <div class="editor-body">
+                    <div id="editor-html" class="editor-layer active"></div>
+                    <div id="editor-css" class="editor-layer"></div>
+                    <div id="editor-js" class="editor-layer"></div>
+                  <div id="editor-settings" class="editor-layer">
+    <div class="settings-container">
+        <h3>Preferences</h3>
+        
+        <div class="setting-item">
+            <label for="theme-selector">Editor Theme</label>
+            <select id="theme-selector" class="theme-select-large">
+                </select>
+        </div>
+
+        <div class="setting-item">
+            <label for="view-selector">Preview Canvas</label>
+            <select id="view-selector" class="theme-select-large">
+                <option value="desktop">Desktop Mode</option>
+                <option value="mobile">Mobile Viewport</option>
+            </select>
+        </div>
+
+        <div class="setting-item">
+            <label for="zoom-slider">
+                Interface Zoom 
+                <span id="zoom-level">100%</span>
+            </label>
+            <input type="range" id="zoom-slider" min="25" max="200" value="100" step="5" />
+        </div>
+
+        <div class="setting-item info-box">
+            <label>System Info</label>
+            <p>Engine: CodeMirror 6 <br> Persistence: LocalStorage Enabled</p>
+        </div>
+    </div>
+</div>
+
+                </div>
+            </section>
+        </div>
+
+        <script type="module" src="assets/js/main.js"></script>
+    </body>
 </html>

@@ -1,4 +1,4 @@
-import { DOM } from "./config.js";
+import { DOM, id } from "./config.js";
 import { initThemeSystem } from "./theme.js";
 import { createEditor } from "./editor.js";
 import { initResizer, setupUIEvents, setPreviewMode } from "./ui.js";
@@ -23,9 +23,11 @@ async function initApp() {
         setupUIEvents();
 
         // 4. Set Default View State
-        const defaultBtn = document.querySelector(".btn-view.active") || 
-                         document.querySelector(".btn-view");
-        setPreviewMode("desktop", defaultBtn);
+        const viewSelector = id("view-selector");
+        if (viewSelector) {
+            viewSelector.value = "desktop";
+            setPreviewMode("desktop");
+        }
 
         // 5. Initial Render
         setTimeout(runPreview, 100);
@@ -37,7 +39,7 @@ async function initApp() {
 }
 
 // Global Error Handling untuk Preview Frame
-window.addEventListener("error", (e) => {
+window.addEventListener("error", e => {
     if (e.target.tagName === "IFRAME") {
         console.warn("Preview rendering error detected.");
     }

@@ -33,19 +33,27 @@ export function initResizer() {
         window.addEventListener("mouseup", stop);
     });
 
-    handle.addEventListener("touchstart", e => {
-        frame.style.pointerEvents = "none";
-        window.addEventListener("touchmove", onDrag, { passive: false });
-        window.addEventListener("touchend", stop);
-    }, { passive: false });
+    handle.addEventListener(
+        "touchstart",
+        e => {
+            frame.style.pointerEvents = "none";
+            window.addEventListener("touchmove", onDrag, { passive: false });
+            window.addEventListener("touchend", stop);
+        },
+        { passive: false }
+    );
 }
 
 /**
  * TAB MANAGEMENT
  */
 export function switchTab(lang, btn) {
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".editor-layer").forEach(layer => layer.classList.remove("active"));
+    document
+        .querySelectorAll(".tab-btn")
+        .forEach(b => b.classList.remove("active"));
+    document
+        .querySelectorAll(".editor-layer")
+        .forEach(layer => layer.classList.remove("active"));
 
     btn.classList.add("active");
     const targetLayer = id(`editor-${lang}`);
@@ -55,11 +63,8 @@ export function switchTab(lang, btn) {
 /**
  * PREVIEW MODE CONTROL
  */
-export function setPreviewMode(mode = "desktop", btn) {
+export function setPreviewMode(mode = "desktop") {
     STATE.previewMode = mode;
-
-    document.querySelectorAll(".btn-view").forEach(b => b.classList.remove("active"));
-    if (btn) btn.classList.add("active");
 
     if (DOM.frame) {
         DOM.frame.className = mode;
@@ -74,25 +79,27 @@ export function setupUIEvents() {
     // Tab Navigation
     document.querySelectorAll(".tab-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-            const lang = btn.id === "btn-settings" ? "settings" : btn.innerText.toLowerCase();
+            const lang =
+                btn.id === "btn-settings"
+                    ? "settings"
+                    : btn.innerText.toLowerCase();
             switchTab(lang, btn);
         });
     });
 
     // Zoom Controls
     const zoomSlider = id("zoom-slider");
-    zoomSlider?.addEventListener("input", (e) => {
+    zoomSlider?.addEventListener("input", e => {
         const value = parseInt(e.target.value);
         setZoom(value);
     });
 
     // View Mode Controls (Desktop/Mobile)
-    document.querySelectorAll(".btn-view").forEach(btn => {
-        if (btn.id.startsWith("zoom")) return;
-
-        btn.addEventListener("click", () => {
-            const mode = btn.innerText.toLowerCase();
-            setPreviewMode(mode, btn);
+    const viewSelector = id("view-selector");
+    if (viewSelector) {
+        viewSelector.addEventListener("change", e => {
+            const mode = e.target.value;
+            setPreviewMode(mode);
         });
-    });
+    }
 }
