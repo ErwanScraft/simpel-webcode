@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pro Live Code Editor</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="app-container">
+            <section class="preview-section">
+                <header class="toolbar">
+                    <span class="brand">LIVE PREVIEW</span>
+                    <div class="toggle-group">
+                        <button class="btn-view active">Desktop</button>
+                        <button class="btn-view">Mobile</button>
+                    </div>
+                </header>
+
+                <div class="preview-wrapper">
+                    <div class="iframe-scaler">
+                        <iframe
+                            id="output-frame"
+                            sandbox="allow-scripts allow-modals"
+                        ></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <div class="resizer" id="drag-handle">
+                <div class="resizer-knob"></div>
+            </div>
+
+            <section class="editor-section">
+                <div class="tabs-header">
+                    <button class="tab-btn active">HTML</button>
+                    <button class="tab-btn">CSS</button>
+                    <button class="tab-btn">JS</button>
+                    <button
+                        id="btn-settings"
+                        class="tab-btn"
+                        style="
+                            margin-left: auto;
+                            border-left: 1px solid var(--border);
+                        "
+                    >
+                        ⚙️
+                    </button>
+                </div>
+
+                
+
+                <div class="editor-body">
+                    <div id="editor-html" class="editor-layer active">
+                        <div class="gutter" id="lines-html"></div>
+                        <div class="code-stack">
+                            <pre id="hl-html" class="syntax-layer"></pre>
+                            <textarea
+                                id="in-html"
+                                data-lang="html"
+                                class="input-layer"
+                                spellcheck="false"
+                                placeholder="Tulis HTML di sini..."
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <div id="editor-css" class="editor-layer">
+                        <div class="gutter" id="lines-css"></div>
+                        <div class="code-stack">
+                            <pre id="hl-css" class="syntax-layer"></pre>
+                            <textarea
+                                id="in-css"
+                                data-lang="css"
+                                class="input-layer"
+                                spellcheck="false"
+                                placeholder="/* Tulis CSS di sini */"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <div id="editor-js" class="editor-layer">
+                        <div class="gutter" id="lines-js"></div>
+                        <div class="code-stack">
+                            <pre id="hl-js" class="syntax-layer"></pre>
+                            <textarea
+                                id="in-js"
+                                data-lang="js"
+                                class="input-layer"
+                                spellcheck="false"
+                                placeholder="// Tulis JavaScript di sini"
+                            ></textarea>
+                        </div>
+                    </div>
+                    <div id="editor-settings" class="editor-layer">
+                        <div
+                            class="settings-container"
+                            style="padding: 20px; width: 100%"
+                        >
+                            <h3
+                                style="
+                                    margin-bottom: 20px;
+                                    color: var(--accent);
+                                "
+                            >
+                                Editor Settings
+                            </h3>
+                            <div class="setting-item">
+                                <label>Tema Editor</label>
+                                <select
+                                    id="theme-selector"
+                                    class="theme-select-large"
+                                ></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="suggestion-box" class="suggestion-popup"></div>
+
+        <script type="module" src="assets/js/main.js"></script>
+    </body>
+</html>
