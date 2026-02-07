@@ -1,93 +1,72 @@
 {
   "vs-dark": {
-    "name": "VS Dark",
+    "name": "Visual Studio Dark",
     "colors": {
       "--bg-app": "#1e1e1e",
       "--bg-panel": "#252526",
       "--accent": "#007aff",
-      "--c-tag": "#569cd6",
-      "--c-attr": "#9cdcfe",
-      "--c-string": "#ce9178",
-      "--c-keyword": "#c586c0",
-      "--c-plain": "#d4d4d4"
+      "--border": "#333",
+      "--text-muted": "#858585"
     }
   },
   "monokai": {
-    "name": "Monokai",
+    "name": "Monokai Pro",
     "colors": {
       "--bg-app": "#272822",
       "--bg-panel": "#1e1f1c",
       "--accent": "#a6e22e",
-      "--c-tag": "#f92672",
-      "--c-attr": "#a6e22e",
-      "--c-string": "#e6db74",
-      "--c-keyword": "#ae81ff",
-      "--c-plain": "#f8f8f2"
+      "--border": "#49483e",
+      "--text-muted": "#75715e"
     }
   },
   "one-dark": {
-    "name": "One Dark",
+    "name": "Atom One Dark",
     "colors": {
       "--bg-app": "#282c34",
       "--bg-panel": "#21252b",
       "--accent": "#61afef",
-      "--c-tag": "#e06c75",
-      "--c-attr": "#d19a66",
-      "--c-string": "#98c379",
-      "--c-keyword": "#c678dd",
-      "--c-plain": "#abb2bf"
+      "--border": "#181a1f",
+      "--text-muted": "#abb2bf"
     }
   },
   "dracula": {
-    "name": "Dracula",
+    "name": "Dracula Vampire",
     "colors": {
       "--bg-app": "#282a36",
       "--bg-panel": "#44475a",
       "--accent": "#bd93f9",
-      "--c-tag": "#ff79c6",
-      "--c-attr": "#50fa7b",
-      "--c-string": "#f1fa8c",
-      "--c-keyword": "#bd93f9",
-      "--c-plain": "#f8f8f2"
+      "--border": "#6272a4",
+      "--text-muted": "#f8f8f2"
+    }
+  },
+  "github-light": {
+    "name": "GitHub Light",
+    "colors": {
+      "--bg-app": "#ffffff",
+      "--bg-panel": "#f6f8fa",
+      "--accent": "#0969da",
+      "--border": "#d0d7de",
+      "--text-muted": "#57606a"
     }
   },
   "nord": {
-    "name": "Nord",
+    "name": "Arctic Nord",
     "colors": {
       "--bg-app": "#2e3440",
       "--bg-panel": "#3b4252",
       "--accent": "#88c0d0",
-      "--c-tag": "#81a1c1",
-      "--c-attr": "#8fbcbb",
-      "--c-string": "#a3be8c",
-      "--c-keyword": "#b48ead",
-      "--c-plain": "#eceff4"
-    }
-  },
-  "solarized-dark": {
-    "name": "Solarized Dark",
-    "colors": {
-      "--bg-app": "#002b36",
-      "--bg-panel": "#073642",
-      "--accent": "#268bd2",
-      "--c-tag": "#268bd2",
-      "--c-attr": "#b58900",
-      "--c-string": "#859900",
-      "--c-keyword": "#d33682",
-      "--c-plain": "#839496"
+      "--border": "#4c566a",
+      "--text-muted": "#d8dee9"
     }
   },
   "cyberpunk": {
-    "name": "Cyberpunk",
+    "name": "Cyberpunk Neon",
     "colors": {
-      "--bg-app": "#150f24",
-      "--bg-panel": "#1d1533",
-      "--accent": "#ff00ff",
-      "--c-tag": "#00ff00",
-      "--c-attr": "#00ffff",
-      "--c-string": "#fff000",
-      "--c-keyword": "#ff00ff",
-      "--c-plain": "#ffffff"
+      "--bg-app": "#130f40",
+      "--bg-panel": "#000000",
+      "--accent": "#f0932b",
+      "--border": "#eb4d4b",
+      "--text-muted": "#7ed6df"
     }
   }
 }
