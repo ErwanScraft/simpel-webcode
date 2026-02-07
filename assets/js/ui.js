@@ -1,5 +1,5 @@
 import { DOM, STATE, id } from "./config.js";
-import { changeZoom, resizePreview } from "./preview.js";
+import { setZoom, resizePreview } from "./preview.js";
 
 /**
  * RESIZER LOGIC
@@ -80,8 +80,11 @@ export function setupUIEvents() {
     });
 
     // Zoom Controls
-    id("zoom-in")?.addEventListener("click", () => changeZoom(0.1));
-    id("zoom-out")?.addEventListener("click", () => changeZoom(-0.1));
+    const zoomSlider = id("zoom-slider");
+    zoomSlider?.addEventListener("input", (e) => {
+        const value = parseInt(e.target.value);
+        setZoom(value);
+    });
 
     // View Mode Controls (Desktop/Mobile)
     document.querySelectorAll(".btn-view").forEach(btn => {

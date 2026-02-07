@@ -84,12 +84,9 @@ export function resizePreview() {
     }
 }
 
-export function changeZoom(delta) {
-    const newZoom = zoomFactor + delta;
-    if (newZoom >= 0.25 && newZoom <= 2.0) {
-        zoomFactor = newZoom;
-        resizePreview();
-    }
+export function setZoom(value) {
+    zoomFactor = value / 100;
+    resizePreview();
 }
 
 window.addEventListener("resize", resizePreview);

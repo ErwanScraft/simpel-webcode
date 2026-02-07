@@ -16,11 +16,7 @@
             <header class="toolbar">
                 <span class="brand">LIVE PREVIEW</span>
                 
-                <div class="zoom-controls">
-                    <button id="zoom-out" class="btn-view">−</button>
-                    <span id="zoom-level">100%</span>
-                    <button id="zoom-in" class="btn-view">+</button>
-                </div>
+
 
                 <div class="toggle-group">
                     <button class="btn-view active">Desktop</button>
@@ -55,6 +51,10 @@
                 <div id="editor-settings" class="editor-layer">
                     <div class="settings-container">
                         <h3>Editor Settings</h3>
+                        <div class="setting-item">
+    <label for="zoom-slider">Zoom Preview (<span id="zoom-level">100%</span>)</label>
+    <input type="range" id="zoom-slider" min="25" max="200" value="100" step="5" style="width: 100%;">
+</div>
 
                         <div class="setting-item">
                             <label for="theme-selector">Tema UI Aplikasi</label>
