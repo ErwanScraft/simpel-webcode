@@ -1,0 +1,9 @@
+/*
+  Lokasi: assets/css/main.css
+  Fungsi: Menggabungkan semua module.
+*/
+@import "modules/base.css";
+@import "modules/preview.css";
+@import "modules/editor.css";
+@import "modules/controls.css";
+@import "modules/settings.css";

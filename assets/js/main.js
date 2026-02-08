@@ -1,9 +1,9 @@
-import { DOM, STORAGE, id } from "./config.js";
-import { initThemeSystem } from "./theme.js";
-import { createEditor } from "./editor.js";
-import { initResizer, setupUIEvents, setPreviewMode } from "./ui.js";
-import { runPreview } from "./preview.js";
-import { handleToolbarAction } from "./toolbar.js";
+import { DOM, STORAGE, id } from "./modules/config.js";
+import { initThemeSystem } from "./modules/theme.js";
+import { createEditor } from "./modules/editor.js";
+import { initResizer, setupUIEvents, setPreviewMode } from "./modules/ui.js";
+import { runPreview } from "./modules/preview.js";
+import { handleToolbarAction } from "./modules/toolbar.js";
 
 /**
  * APP INITIALIZATION

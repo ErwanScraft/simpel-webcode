@@ -3,8 +3,11 @@
   "version": "0.5.2",
   "author": "ErwanScraft",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^10.0.0",
+    "globals": "^17.3.0",
     "standard-version": "^9.5.0"
   },
   "scripts": {
