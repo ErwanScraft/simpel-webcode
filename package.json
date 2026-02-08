@@ -1,6 +1,6 @@
 {
   "name": "simpel web code editor",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "author": "ErwanScraft",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
