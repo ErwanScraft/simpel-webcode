@@ -18,7 +18,6 @@ export function initResizer() {
 
         if (pct > 10 && pct < 90) {
             previewSec.style.height = `${pct}%`;
-            // Pastikan preview menyesuaikan skala saat container berubah
             resizePreview();
         }
     };
@@ -60,6 +59,15 @@ export function switchTab(lang, btn) {
     btn.classList.add("active");
     const targetLayer = id(`editor-${lang}`);
     if (targetLayer) targetLayer.classList.add("active");
+
+    if (lang === "settings") {
+        document.body.classList.add("hide-toolbar");
+    } else {
+        const isToolbarEnabled = STORAGE.loadToolbarStatus();
+        if (isToolbarEnabled) {
+            document.body.classList.remove("hide-toolbar");
+        }
+    }
 }
 
 /**
@@ -155,12 +163,30 @@ export function setupUIEvents() {
         // Load status awal
         const isVisible = STORAGE.loadToolbarStatus();
         toolbarToggle.checked = isVisible;
-        applyToolbarStatus(isVisible);
+
+        // Cek tab aktif saat inisialisasi
+        const activeTab = document
+            .querySelector(".tab-btn.active")
+            ?.innerText.toLowerCase();
+        if (activeTab === "settings") {
+            applyToolbarStatus(false);
+        } else {
+            applyToolbarStatus(isVisible);
+        }
 
         toolbarToggle.addEventListener("change", e => {
             const status = e.target.checked;
-            applyToolbarStatus(status);
             STORAGE.saveToolbarStatus(status);
+
+            // PERBAIKAN: Hanya munculkan toolbar jika checkbox ON DAN tidak di tab settings
+            const currentTab = document.querySelector(".tab-btn.active")?.id;
+            const isAtSettings = currentTab === "btn-settings";
+
+            if (status && !isAtSettings) {
+                applyToolbarStatus(true);
+            } else {
+                applyToolbarStatus(false);
+            }
         });
     }
 }
