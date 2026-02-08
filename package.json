@@ -1,10 +1,19 @@
 {
   "name": "simpel web code editor",
-  "version": "0.5.1",
+  "version": "0.5.2",
+  "author": "ErwanScraft",
   "devDependencies": {
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
     "standard-version": "^9.5.0"
   },
   "scripts": {
+    "commit": "cz",
     "release": "standard-version"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

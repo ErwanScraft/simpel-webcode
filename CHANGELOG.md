@@ -1,23 +1,8 @@
 # Changelog
 
-Semua perubahan penting pada project ini akan dicatat di file ini.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-Format mengikuti Keep a Changelog
-dan versi mengikuti Semantic Versioning.
-
----
-
-## [Unreleased]
-### Added
--
-
-### Changed
--
-
-### Fixed
--
-
----
+### [0.5.2](https://github.com/ErwanScraft/simpel-webcode/compare/v0.5.1...v0.5.2) (2026-02-08)
 
 ## [0.5.0] - 2026-02-08
 ### Added
