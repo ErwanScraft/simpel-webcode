@@ -1,5 +1,7 @@
-import { DOM, STATE, id } from "./config.js";
+import { DOM, STATE, STORAGE, id } from "./config.js";
 import { setZoom, resizePreview } from "./preview.js";
+import { handleToolbarAction, moveCursor } from "./toolbar.js";
+import { updateTabSize } from "./editor.js";
 
 /**
  * RESIZER LOGIC
@@ -72,6 +74,14 @@ export function setPreviewMode(mode = "desktop") {
     }
 }
 
+function applyToolbarStatus(isVisible) {
+    if (isVisible) {
+        document.body.classList.remove("hide-toolbar");
+    } else {
+        document.body.classList.add("hide-toolbar");
+    }
+}
+
 /**
  * UI EVENT BINDING
  */
@@ -100,6 +110,57 @@ export function setupUIEvents() {
         viewSelector.addEventListener("change", e => {
             const mode = e.target.value;
             setPreviewMode(mode);
+        });
+    }
+
+    document.addEventListener("click", e => {
+        const btn = e.target.closest(".tool-btn, .key-item");
+        const popup = document.getElementById("key-popup");
+
+        if (!btn) {
+            // Tutup popup jika klik di luar area toolbar
+            if (popup && popup.classList.contains("show")) {
+                popup.classList.remove("show");
+            }
+            return;
+        }
+
+        // Cegah event mengalir ke document yang bisa menutup popup seketika
+        e.stopPropagation();
+
+        const action = btn.getAttribute("data-action");
+
+        if (["up", "down", "left", "right"].includes(action)) {
+            moveCursor(action);
+        } else {
+            handleToolbarAction(action, btn);
+        }
+    });
+
+    const tabSelector = id("tab-selector");
+    if (tabSelector) {
+        // Set nilai awal dari storage
+        tabSelector.value = STORAGE.loadTabSize();
+
+        tabSelector.addEventListener("change", e => {
+            const newSize = e.target.value;
+            updateTabSize(newSize);
+            STORAGE.saveTabSize(newSize);
+        });
+    }
+
+    // Toolbar Toggle Logic
+    const toolbarToggle = id("toolbar-toggle");
+    if (toolbarToggle) {
+        // Load status awal
+        const isVisible = STORAGE.loadToolbarStatus();
+        toolbarToggle.checked = isVisible;
+        applyToolbarStatus(isVisible);
+
+        toolbarToggle.addEventListener("change", e => {
+            const status = e.target.checked;
+            applyToolbarStatus(status);
+            STORAGE.saveToolbarStatus(status);
         });
     }
 }

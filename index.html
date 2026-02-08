@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Pro Live Code Editor | CodeMirror 6</title>
+        <title>Simpel Web Code Editor | CodeMirror 6</title>
 
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,7 +16,7 @@
         <div class="app-container">
             <section class="preview-section">
                 <header class="toolbar">
-                    <span class="brand">LIVE PREVIEW</span>
+                    <span class="brand">SIMPEL WEB CODE EDITOR</span>
                 </header>
 
                 <div class="preview-wrapper">
@@ -47,43 +47,164 @@
                     </button>
                 </div>
 
+                <div class="editor-controls-bar">
+                    <div class="control-group">
+                        <button class="tool-btn" data-action="ctrl">
+                            CTRL
+                        </button>
+                        <button class="tool-btn" data-action="shift">
+                            SHFT
+                        </button>
+                        <button class="tool-btn" data-action="toggle-popup">
+                            KEYS ▾
+                        </button>
+                    </div>
+
+                    <div class="control-group">
+                        <button class="tool-btn" data-action="undo">↶</button>
+                        <button class="tool-btn" data-action="redo">↷</button>
+                        <button class="tool-btn" data-action="tab">TAB</button>
+                    </div>
+
+                    <div class="control-group nav-cluster">
+                        <button class="tool-btn" data-action="left">◀</button>
+                        <div class="vertical-nav">
+                            <button class="tool-btn" data-action="up">▲</button>
+                            <button class="tool-btn" data-action="down">
+                                ▼
+                            </button>
+                        </div>
+                        <button class="tool-btn" data-action="right">▶</button>
+                    </div>
+
+                    <div id="key-popup" class="key-popup">
+                        <button class="key-item" data-action="key-a">
+                            A (All)
+                        </button>
+                        <button class="key-item" data-action="key-z">
+                            Z (Undo)
+                        </button>
+                        <button class="key-item" data-action="key-y">
+                            Y (Redo)
+                        </button>
+                        <div class="divider"></div>
+                        <button class="key-item" data-action="key-{">
+                            { }
+                        </button>
+                        <button class="key-item" data-action="key-(">
+                            ( )
+                        </button>
+                        <button class="key-item" data-action="key-[">
+                            [ ]
+                        </button>
+                        <button class="key-item" data-action="key-;">;</button>
+                        <button class="key-item" data-action="key-=">=</button>
+                        <button class="key-item" data-action="key-!">!</button>
+                        <button class="key-item" data-action="key-/">/</button>
+                        <button class="key-item" data-action="key-&gt;">
+                            &gt;
+                        </button>
+                    </div>
+                </div>
+
                 <div class="editor-body">
                     <div id="editor-html" class="editor-layer active"></div>
                     <div id="editor-css" class="editor-layer"></div>
                     <div id="editor-js" class="editor-layer"></div>
-                  <div id="editor-settings" class="editor-layer">
-    <div class="settings-container">
-        <h3>Preferences</h3>
-        
-        <div class="setting-item">
-            <label for="theme-selector">Editor Theme</label>
-            <select id="theme-selector" class="theme-select-large">
-                </select>
-        </div>
+                    <div id="editor-settings" class="editor-layer">
+                        <div class="settings-container">
+                            <h2 class="settings-title">Editor Settings</h2>
 
-        <div class="setting-item">
-            <label for="view-selector">Preview Canvas</label>
-            <select id="view-selector" class="theme-select-large">
-                <option value="desktop">Desktop Mode</option>
-                <option value="mobile">Mobile Viewport</option>
-            </select>
-        </div>
+                            <div class="setting-item">
+                                <label for="theme-selector"
+                                    >Interface Theme</label
+                                >
+                                <select
+                                    id="theme-selector"
+                                    class="theme-select-large"
+                                ></select>
+                            </div>
 
-        <div class="setting-item">
-            <label for="zoom-slider">
-                Interface Zoom 
-                <span id="zoom-level">100%</span>
-            </label>
-            <input type="range" id="zoom-slider" min="25" max="200" value="100" step="5" />
-        </div>
+                            <div class="setting-item">
+                                <label for="tab-selector"
+                                    >Tab Indentation</label
+                                >
+                                <select
+                                    id="tab-selector"
+                                    class="theme-select-large"
+                                >
+                                    <option value="2">
+                                        2 Spaces (Default)
+                                    </option>
+                                    <option value="4">4 Spaces</option>
+                                    <option value="8">8 Spaces</option>
+                                </select>
+                            </div>
 
-        <div class="setting-item info-box">
-            <label>System Info</label>
-            <p>Engine: CodeMirror 6 <br> Persistence: LocalStorage Enabled</p>
-        </div>
-    </div>
-</div>
+                            <div class="setting-item">
+                                <label for="view-selector"
+                                    >Preview Viewport</label
+                                >
+                                <select
+                                    id="view-selector"
+                                    class="theme-select-large"
+                                >
+                                    <option value="desktop">
+                                        Desktop Mode
+                                    </option>
+                                    <option value="mobile">
+                                        Mobile Viewport
+                                    </option>
+                                </select>
+                            </div>
 
+                            <div class="setting-item">
+                                <label for="zoom-slider">
+                                    Interface Zoom
+                                    <span id="zoom-level">100%</span>
+                                </label>
+                                <input
+                                    type="range"
+                                    id="zoom-slider"
+                                    min="25"
+                                    max="200"
+                                    value="100"
+                                    step="5"
+                                />
+                            </div>
+
+                            <div
+                                class="setting-item"
+                                style="
+                                    flex-direction: row;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                "
+                            >
+                                <label for="toolbar-toggle"
+                                    >Tampilkan Toolbar Bawah</label
+                                >
+                                <label class="switch">
+                                    <input
+                                        type="checkbox"
+                                        id="toolbar-toggle"
+                                    />
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item info-box">
+                                <label>System Info</label>
+                                <p>
+                                    Engine: CodeMirror 6 <br />
+                                    Persistence: LocalStorage Enabled <br />
+                                    Status Versi: 0.5.0
+                                </p>
+                            </div>
+
+                            <div style="height: 80px"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

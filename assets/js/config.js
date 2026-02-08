@@ -2,7 +2,9 @@
  * APP CONFIGURATION
  */
 export const CONFIG = {
-    debounceTime: 400
+    debounceTime: 400,
+    defaultTabSize: "2",
+    defaultToolbarVisible: true
 };
 
 /**
@@ -52,5 +54,18 @@ export const STORAGE = {
     },
     loadTheme: () => {
         return localStorage.getItem("preferred-theme") || "vs-dark";
+    },
+    saveTabSize: (size) => {
+        localStorage.setItem("tab-size", size);
+    },
+    loadTabSize: () => {
+        return localStorage.getItem("tab-size") || CONFIG.defaultTabSize;
+    },
+    saveToolbarStatus: (visible) => {
+        localStorage.setItem("toolbar-visible", visible);
+    },
+    loadToolbarStatus: () => {
+        const saved = localStorage.getItem("toolbar-visible");
+        return saved !== null ? saved === "true" : CONFIG.defaultToolbarVisible;
     }
 };

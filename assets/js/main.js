@@ -1,8 +1,9 @@
-import { DOM, id } from "./config.js";
+import { DOM, STORAGE, id } from "./config.js";
 import { initThemeSystem } from "./theme.js";
 import { createEditor } from "./editor.js";
 import { initResizer, setupUIEvents, setPreviewMode } from "./ui.js";
 import { runPreview } from "./preview.js";
+import { handleToolbarAction } from "./toolbar.js";
 
 /**
  * APP INITIALIZATION
@@ -36,6 +37,9 @@ async function initApp() {
     } catch (error) {
         console.error("Initialization failed:", error);
     }
+
+    const toolbarVisible = STORAGE.loadToolbarStatus();
+    if (!toolbarVisible) document.body.classList.add("hide-toolbar");
 }
 
 // Global Error Handling untuk Preview Frame

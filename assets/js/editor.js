@@ -6,12 +6,12 @@ import { javascript } from "https://esm.sh/@codemirror/lang-javascript";
 import { html } from "https://esm.sh/@codemirror/lang-html";
 import { css } from "https://esm.sh/@codemirror/lang-css";
 import { oneDark } from "https://esm.sh/@codemirror/theme-one-dark";
-
+import { undo, redo } from "https://esm.sh/@codemirror/commands";
 import { DOM, EDITORS, STATE, CONFIG, STORAGE } from "./config.js";
 import { runPreview } from "./preview.js";
-
+import { indentUnit } from "https://esm.sh/@codemirror/language";
 const themeConfig = new Compartment();
-
+const tabConfig = new Compartment();
 /**
  * CORE EDITOR CREATION
  */
@@ -40,10 +40,23 @@ export function createEditor(lang, container) {
             keymap.of([indentWithTab]),
             languageConf[lang],
             themeConfig.of(oneDark),
+            tabConfig.of(
+                indentUnit.of(" ".repeat(parseInt(STORAGE.loadTabSize())))
+            ),
             updateListener,
             EditorView.theme({
-                "&": { height: "100%" },
-                ".cm-scroller": { overflow: "auto" }
+                "&": {
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column"
+                },
+                ".cm-scroller": {
+                    overflow: "auto",
+                    flexGrow: 1
+                },
+                ".cm-content": {
+                    fontFamily: "'JetBrains Mono', monospace"
+                }
             })
         ],
         parent: container
@@ -58,7 +71,7 @@ export function createEditor(lang, container) {
  */
 export function updateEditorTheme(isDark) {
     const theme = isDark ? oneDark : [];
-    
+
     Object.values(EDITORS).forEach(editor => {
         if (editor) {
             editor.dispatch({
@@ -73,4 +86,26 @@ export function updateEditorTheme(isDark) {
  */
 export function getCode(lang) {
     return EDITORS[lang] ? EDITORS[lang].state.doc.toString() : "";
+}
+
+/**
+ * HISTORY CONTROLS
+ */
+export function executeUndo(view) {
+    undo(view);
+}
+
+export function executeRedo(view) {
+    redo(view);
+}
+
+export function updateTabSize(size) {
+    const spaceString = " ".repeat(parseInt(size));
+    Object.values(EDITORS).forEach(editor => {
+        if (editor) {
+            editor.dispatch({
+                effects: tabConfig.reconfigure(indentUnit.of(spaceString))
+            });
+        }
+    });
 }
