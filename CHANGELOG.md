@@ -1,21 +1,8 @@
-# CHANGELOG
+# Changelog
 
-Semua perubahan penting pada proyek ini didokumentasikan di file ini.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-Format mengikuti "Keep a Changelog" dan proyek ini menggunakan Semantic Versioning.
-
-## [Unreleased]
-
-### Ditambahkan
-- CHANGELOG.md diperbarui bahasa (Indonesia) dan disiapkan untuk dokumentasi versi selanjutnya.
-
-### Diubah
-- N/A
-
-### Diperbaiki
-- N/A
-
----
+### 0.5.1 (2026-02-08)
 
 ## [0.1.1] - 2026-02-07
 

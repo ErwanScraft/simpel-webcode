@@ -1,0 +1,10 @@
+{
+  "name": "simpel web code editor",
+  "version": "0.5.1",
+  "devDependencies": {
+    "standard-version": "^9.5.0"
+  },
+  "scripts": {
+    "release": "standard-version"
+  }
+}
